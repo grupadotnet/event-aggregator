@@ -1,5 +1,3 @@
-using System;
-
 namespace Event_Aggregator.Models
 {
     public class ErrorViewModel
