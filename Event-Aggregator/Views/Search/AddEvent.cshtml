@@ -2,4 +2,86 @@
     ViewData["Title"] = "Kreator wydarzenia";
 }
 
-<p>Tu będzie możliwość dodania eventu</p>
+
+@model Event_Aggregator.Models.Event
+
+
+
+
+
+<form asp-controller="MyEvents" asp-action="AddEvent" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <p>
+
+        <span class="input">
+            <input type="text" asp-for="Title" required placeholder="Tytuł" />
+        </span>
+
+
+
+
+
+    </p>
+    <p>
+        <span class="input">
+            <input type="text" asp-for="Category" required placeholder="Kategoria" />
+        </span>
+
+
+
+
+    </p>
+    <p>
+        <span class="input">
+            <input type="text" asp-for="Hash" required placeholder="Hashtag" />
+        </span>
+
+
+
+
+    </p>
+    <p>
+        <span class="input">
+            <input asp-for="Localization" required placeholder="Lokalizacja" />
+        </span>
+
+
+
+
+    </p>
+
+    <p>
+        <div class="date">
+            <span class="input">
+                <input asp-for="StartDate" required />
+            </span>
+        </div>
+    </p>
+    <p>
+        <div class="date">
+            <span class="input">
+                <input asp-for="EndDate" required />
+            </span>
+        </div>
+    </p>
+    <p>
+        <span class="input">
+            <input asp-for="Description" required placeholder="Opis" />
+        </span>
+
+
+
+
+    </p>
+
+
+    <button class="btn btn-light" type="submit">ADD</button>
+
+</form>
+<p>
+    @ViewBag.Message
+</p>
+
+
+
