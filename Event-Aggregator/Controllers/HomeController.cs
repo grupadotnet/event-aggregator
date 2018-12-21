@@ -18,7 +18,7 @@ namespace Event_Aggregator.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var latest = _context.Event.OrderByDescending(x => x.StartDate).Select(x => x);
+            var latest = _context.Event.OrderByDescending(x => x.StartDate).Take(10);
             return View(await latest.ToListAsync());
         }
 
