@@ -1,5 +1,28 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Aktualności";
 }
-<p>Tu będą aktualności takie jak ostatnio dodane wydarzenia.</p>
-<p>W przyszłości propozycje wydarzeń na podstawie ostatnich wyszukiwań.</p>
+
+<h3>Lista ostatnio dodanych wydarzeń</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nazwa wydarzenia</th>
+            <th>Kategoria</th>
+            <th>Data i godzina</th>
+            <th>Lokalizacja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < 10; i++)
+        {
+            <tr>
+                <td><h4>ITAD PK</h4></td>
+                <td><h4>IT</h4></td>
+                <td><h4>10.10.2018 18:00</h4></td>
+                <td><h4>ul. Warszawska 69</h4></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</br></br>
