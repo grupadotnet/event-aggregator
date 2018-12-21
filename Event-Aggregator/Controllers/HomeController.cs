@@ -16,10 +16,10 @@ namespace Event_Aggregator.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var latest = _context.Event.OrderByDescending(x => x.StartDate).Select(x => x).ToList();
-            return View(latest);
+            var latest = _context.Event.OrderByDescending(x => x.StartDate).Select(x => x);
+            return View(await latest.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

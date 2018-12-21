@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Event_Aggregator.Models.Event>
 @{
     ViewData["Title"] = "Aktualności";
 }
@@ -14,14 +14,22 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < 10; i++)
+        @foreach (var item in Model)
         {
-            <tr>
-                <td><h4>ITAD PK</h4></td>
-                <td><h4>IT</h4></td>
-                <td><h4>10.10.2018 18:00</h4></td>
-                <td><h4>ul. Warszawska 69</h4></td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localization)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
