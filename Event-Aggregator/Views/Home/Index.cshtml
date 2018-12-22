@@ -1,5 +1,36 @@
-﻿@{
+﻿@model IEnumerable<Event_Aggregator.Models.Event>
+@{
     ViewData["Title"] = "Aktualności";
 }
-<p>Tu będą aktualności takie jak ostatnio dodane wydarzenia.</p>
-<p>W przyszłości propozycje wydarzeń na podstawie ostatnich wyszukiwań.</p>
+
+<h3>Lista ostatnio dodanych wydarzeń</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nazwa wydarzenia</th>
+            <th>Kategoria</th>
+            <th>Data i godzina</th>
+            <th>Lokalizacja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localization)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+</br></br>
