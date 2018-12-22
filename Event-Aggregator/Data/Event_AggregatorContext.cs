@@ -9,6 +9,6 @@ namespace Event_Aggregator.Models
         {
         }
 
-        public DbSet<Event_Aggregator.Models.Event> Event { get; set; }
+        public DbSet<Event> Event { get; set; }
     }
 }
