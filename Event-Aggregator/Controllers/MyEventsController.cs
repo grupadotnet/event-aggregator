@@ -32,5 +32,14 @@ namespace Event_Aggregator.Controllers
 
            
         }
+        public IActionResult SearchEvent(Event eve)
+        {
+            
+
+                return View();
+            
+
+
+        }
     }
 }
