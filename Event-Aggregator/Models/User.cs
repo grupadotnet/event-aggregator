@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Event_Aggregator.Models
+﻿namespace Event_Aggregator.Models
 {
     public class User
     {
