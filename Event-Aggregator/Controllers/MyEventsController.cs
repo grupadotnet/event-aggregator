@@ -1,5 +1,6 @@
 ﻿using Event_Aggregator.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 
@@ -30,8 +31,8 @@ namespace Event_Aggregator.Controllers
         [HttpPost]
         public IActionResult SearchResult(Event eve)
         {
-
-            var filtredList = context.Event.Where(x => x.Title.Contains(eve.Title)).Select(x => x.Title).ToList();
+            
+           List <string> filtredList = context.Event.Where(x => x.Title.Contains(eve.Title) || x.Category.Contains(eve.Category)).Select(x => x.Title ).ToList();
            if(filtredList.Count==0)
             {
                 ViewBag.Message = "Brak Wyników";
