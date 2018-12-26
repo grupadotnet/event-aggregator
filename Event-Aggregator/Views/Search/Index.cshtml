@@ -1,21 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Wyszukaj wydarzenia";
 }
+@model Event_Aggregator.Models.Event
 </br>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-8 text-center ">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Wpisz hasło lub słowo kluczowe" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <a asp-controller="Search" asp-action="SearchResult"><i class="glyphicon glyphicon-search"></i></a>
-                        </button>
-                    </span>
+        <form asp-controller="MyEvents" asp-action="SearchResult">
+            <div class="col-sm-8 text-center ">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" asp-for="Title" class="form-control input-lg" placeholder="Wpisz hasło lub słowo kluczowe" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="submit">
+                               <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="col-sm-offset-4 text-center">
             <button class="btn btn-info btn-lg" type="button">
                 <a asp-controller="Search" asp-action="AddEvent">Utwórz wydarzenie</a>
