@@ -5,9 +5,19 @@
 <p>Tu będzie lista wydarzeń pasujących do hasła</p>
 
 
-@foreach (var i in ViewBag.Message)
+@if (ViewBag.Message is String)
 {
-    <p>@i</p>
+    var result = ViewBag.Message;
+    <p>@result</p>
 }
+else
+{
+    @foreach (var i in ViewBag.Message)
+    {
+        <p>@i</p>
 
+    }
+
+
+}
 
