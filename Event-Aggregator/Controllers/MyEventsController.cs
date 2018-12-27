@@ -1,5 +1,8 @@
 ﻿using Event_Aggregator.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,9 +28,21 @@ namespace Event_Aggregator.Controllers
                 return View();
             }
         }
-        public IActionResult SearchEvent(Event eve)
+        [HttpPost]
+        public IActionResult SearchResult(Event eve)
         {
-            return View();
+            
+           List <string> filtredList = context.Event.Where(x => x.Title.Contains(eve.Title) || x.Category.Contains(eve.Category)).Select(x => x.Title ).ToList();
+           if(filtredList.Count==0)
+            {
+                ViewBag.Message = "Brak Wyników";
+            }
+           else
+            {
+                ViewBag.Message = filtredList;
+            }
+           
+            return View("~/Views/Search/SearchResult.cshtml");
         }
     }
 }

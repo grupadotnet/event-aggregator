@@ -3,3 +3,21 @@
 }
 
 <p>Tu będzie lista wydarzeń pasujących do hasła</p>
+
+
+@if (ViewBag.Message is String)
+{
+    var result = ViewBag.Message;
+    <p>@result</p>
+}
+else
+{
+    @foreach (var i in ViewBag.Message)
+    {
+        <p>@i</p>
+
+    }
+
+
+}
+
