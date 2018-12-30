@@ -1,17 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Panel administratora";
 }
+@model Event_Aggregator.Models.User
 
 <link rel="stylesheet" href="~/css/LoginPanel.css" asp-append-version="true" />
 </br>
 </br>
-<form>
+<form asp-controller="AdminPanel" asp-action="Panel" method="post">
     <div class="container adminpanel">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="text" asp-for="Login" placeholder="Enter Username" required>
+        <input type="password" asp-for="Password" placeholder="Enter Password" required>
 
         <button type="submit">Login</button>
     </div>
