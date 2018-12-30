@@ -12,7 +12,6 @@ namespace Event_Aggregator.Controllers
     {
         private Event_AggregatorContext context;
         public AdminPanelController(Event_AggregatorContext ctx) => context = ctx;
-
         [HttpGet]
         public IActionResult Index()
         {
