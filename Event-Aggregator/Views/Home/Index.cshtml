@@ -3,7 +3,7 @@
     ViewData["Title"] = "Aktualności";
 }
 
-<div class="container" style="margin-top: 8%;">
+<div class="container" style="margin-top: 6%;">
     <div class="col-md-6 col-md-offset-3">
         <div class="row">
             <form role="form" id="form-buscar">
@@ -11,10 +11,10 @@
                     <div class="input-group">
                         <input id="1" class="form-control" type="text" name="search" placeholder="Search..." required />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
                             </button>
-                            <button class="btn btn-success" type="button">
+                            <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("AddEvent", "Search")'">
                                 <i class="glyphicon glyphicon-plus" aria-hidden="false"></i> Add Event
                             </button>
                         </span>
