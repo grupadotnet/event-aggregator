@@ -9,6 +9,7 @@
         <div class="row">
             <form role="form" id="form-buscar" asp-controller="Home" asp-action="Index">
                 <div class="form-group">
+                    <p>@ViewBag.Message</p>
                     <div class="input-group">
                         <input id="1" class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe..." required />
                         <span class="input-group-btn">

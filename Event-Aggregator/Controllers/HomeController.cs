@@ -22,10 +22,10 @@ namespace Event_Aggregator.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 var query = latest.Where(x => x.Title.Contains(searchString) || x.Hash.Contains(searchString) || x.Category.Contains(searchString)).Select(x => x);
-                if (!query.Equals(null))
+                if (!(query.Count() == 0))
                     latest = query;
                 else
-                    ViewBag.Message("Nie odnaleziono wyników spełniających kryteria wyszukiwania");
+                    ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
             }
 
             return View(await latest.ToListAsync());
