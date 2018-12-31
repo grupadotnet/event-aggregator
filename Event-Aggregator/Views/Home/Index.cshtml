@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Event_Aggregator.Models.Event>
+
 @{
     ViewData["Title"] = "Aktualności";
 }
@@ -6,10 +7,10 @@
 <div class="container" style="margin-top: 6%;">
     <div class="col-md-6 col-md-offset-3">
         <div class="row">
-            <form role="form" id="form-buscar">
+            <form role="form" id="form-buscar" asp-controller="Home" asp-action="Index">
                 <div class="form-group">
                     <div class="input-group">
-                        <input id="1" class="form-control" type="text" name="search" placeholder="Hasło lub słowo kluczowe..." required />
+                        <input id="1" class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe..." required />
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit">
                                 <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Szukaj

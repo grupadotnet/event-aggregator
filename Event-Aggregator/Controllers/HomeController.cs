@@ -16,9 +16,18 @@ namespace Event_Aggregator.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var latest = _context.Event.OrderByDescending(x => x.StartDate).Take(10);
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var query = latest.Where(x => x.Title.Contains(searchString) || x.Hash.Contains(searchString) || x.Category.Contains(searchString)).Select(x => x);
+                if (!query.Equals(null))
+                    latest = query;
+                else
+                    ViewBag.Message("Nie odnaleziono wyników spełniających kryteria wyszukiwania");
+            }
+
             return View(await latest.ToListAsync());
         }
 
