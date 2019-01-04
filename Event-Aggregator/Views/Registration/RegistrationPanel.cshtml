@@ -1,0 +1,93 @@
+﻿@model Event_Aggregator.Models.User
+@{
+    ViewData["Title"] = "RegistrationPanel";
+}
+
+@{
+    Layout = null;
+}
+
+
+
+
+<title>Registration</title>
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<link href="~/css/Inputs.css" rel="stylesheet" />
+
+
+
+
+<form asp-controller="Registration" asp-action="Registration" method="post">
+    <div asp-validation-summary="All"></div>
+
+
+    <p>
+
+        <span class="input">
+            <input asp-for="Login" type="text" required placeholder="Name" />
+        </span>
+
+    </p>
+
+
+
+
+
+    <p>
+
+        <span class="input">
+            <input type="text" asp-for="Email" required placeholder="Email" />
+        </span>
+
+
+
+
+
+    </p>
+    <p>
+        <span class="input">
+            <input type="text" pattern="[0-9]{9}" asp-for="Phone" title="Number should have 9 digits" required placeholder="Phone" />
+        </span>
+
+
+
+
+    </p>
+    <p>
+        <span class="input">
+            <input type="password" asp-for="Password" required placeholder="Password" />
+        </span>
+
+
+
+
+    </p>
+
+
+
+
+
+
+    <div class="wrapper">
+        <button class="btn btn-light" type="submit">REGISTER!</button>
+    </div>
+
+
+</form>
+<div class="wrapper">
+    <span>
+
+        <a class="passwordhelp" asp-controller="Home" asp-action="Index"> Wróć do strony głównej</a>
+    </span>
+</div>
+<div class="wrapper">
+    
+<span style="color:red;">@ViewBag.Message</span>
+   
+</div>
+
+
+
+

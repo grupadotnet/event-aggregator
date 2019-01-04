@@ -1,0 +1,59 @@
+﻿@model Event_Aggregator.Models.User
+
+@{
+    Layout = null;
+}
+
+
+<title>Login</title>
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<link href="~/css/Inputs.css" rel="stylesheet" />
+
+
+
+
+
+<form asp-action="Login" method="post">
+
+
+    <p>
+        <span class="input">
+            <input asp-for="Email" type="text" placeholder="Email" required />
+            <span></span>
+        </span>
+    </p>
+
+
+
+    <div class="wrapper">
+        <span>
+
+            <a class="passwordhelp" asp-controller="3" asp-action="#"> Forgot Password?</a>
+        </span>
+    </div>
+    <p>
+        <span class="input">
+            <input type="password" asp-for="Password" required placeholder="Password" />
+            <span></span>
+
+        </span>
+    </p>
+
+
+    <div class="wrapper">
+        <button class="btn btn-light" type="submit">SIGN IN</button>
+    </div>
+</form>
+<div class="wrapper">
+    <span>
+
+        <a class="passwordhelp" asp-controller="Home" asp-action="Index"> Wróć do strony głównej</a>
+    </span>
+</div>
+<div class="wrapper">
+
+    <span style="color:red;">@ViewBag.Message</span>
+
+</div>
+
