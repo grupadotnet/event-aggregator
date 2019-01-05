@@ -1,0 +1,110 @@
+﻿
+body
+{
+    background-color:black;
+}
+
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+
+.input {
+    position: relative;
+    font-size: 1.5em;
+    background: #cbd0d5;
+    padding: 3px;
+    display: inline-block;
+}
+
+    .input *:not(span) {
+        position: relative;
+        display: inherit;
+        border-radius: inherit;
+        margin: 0;
+        border: none;
+        outline: none;
+        padding: 0 .325em;
+        z-index: 1;
+    }
+
+        .input *:not(span):focus + span {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+
+    
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.5;
+    font-size: 1em;
+}
+
+
+
+html, body {
+    height: 100%;
+}
+
+input {
+    font-family: inherit;
+    line-height: inherit;
+    color: white;
+    min-width: 12em;
+}
+
+::-webkit-input-placeholder {
+    color: #cbd0d5;
+}
+
+:-ms-input-placeholder {
+    color: #cbd0d5;
+}
+
+::-ms-input-placeholder {
+    color: #cbd0d5;
+}
+
+::placeholder {
+    color: #cbd0d5;
+}
+form
+{
+    margin:auto;
+    width:250px;
+    margin-top: 200px;
+}
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+.date 
+{
+    margin-right:30px;
+}
+.passwordhelp
+{
+    text-decoration:none;
+    color:white;
+    
+}
+
+.passwordhelp:hover {
+    text-decoration: none;
+    color: dodgerblue;
+    cursor:pointer;
+}
+
+
