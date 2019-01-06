@@ -4,14 +4,16 @@ using Event_Aggregator.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventAggregator.Migrations
 {
     [DbContext(typeof(Event_AggregatorContext))]
-    partial class Event_AggregatorContextModelSnapshot : ModelSnapshot
+    [Migration("20190106132602_TestMigration")]
+    partial class TestMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,26 +21,13 @@ namespace EventAggregator.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Event_Aggregator.Models.Category", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CategoryName");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Category");
-                });
-
             modelBuilder.Entity("Event_Aggregator.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryID");
+                    b.Property<string>("Category");
 
                     b.Property<string>("Description");
 
@@ -53,8 +42,6 @@ namespace EventAggregator.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryID");
 
                     b.ToTable("Event");
                 });
@@ -79,13 +66,6 @@ namespace EventAggregator.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("Event_Aggregator.Models.Event", b =>
-                {
-                    b.HasOne("Event_Aggregator.Models.Category", "Category")
-                        .WithMany("Events")
-                        .HasForeignKey("CategoryID");
                 });
 #pragma warning restore 612, 618
         }
