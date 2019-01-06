@@ -19,9 +19,10 @@ namespace Event_Aggregator.Controllers
         public async Task<IActionResult> Index(string searchString)
         {
             var latest = _context.Event.OrderByDescending(x => x.StartDate).Take(10);
+            var categories = _context.Category.Select(x => x);
             if (!string.IsNullOrEmpty(searchString))
             {
-                var query = latest.Where(x => x.Title.Contains(searchString) || x.Hash.Contains(searchString)).Select(x => x);
+                var query = latest.Where(x => x.Title.Contains(searchString) || x.Category.CategoryName.Contains(searchString) || x.Hash.Contains(searchString)).Select(x => x);
                 if (!(query.Count() == 0))
                     latest = query;
                 else
