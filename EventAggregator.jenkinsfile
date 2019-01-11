@@ -7,7 +7,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-        	powershell "Scripts\\Build.ps1 -path "C:\Users\biela\Documents\event-aggregator\Event-Aggregator.sln""
+        	powershell "C:\\Users\\biela\\Documents\\event-aggregator\\Scripts\\Build.ps1 -path "C:\Users\biela\Documents\event-aggregator\Event-Aggregator.sln""
         }
     } catch (err) {
         currentBuild.result = 'FAILED'
