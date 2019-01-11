@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Event_Aggregator.Models.Event>
-
+﻿@model Event_Aggregator.Models.ModelsWrapper
 @{
     ViewData["Title"] = "Aktualności";
 }
@@ -12,8 +11,15 @@
                 <div class="form-group">
                     <p>@ViewBag.Message</p>
                     <div class="input-group">
-                        <input id="1" class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe..." required />
+                        <input id="1" style="border-right:none"class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe...">
                         <span class="input-group-btn">
+                            <select class="form-control" id="sel1" name="categoryString" style="margin-left: -130px; width: 130px">
+                                <option id="0">Wszystko</option>
+                                @foreach (var item in ViewData["Categories"] as IEnumerable<Event_Aggregator.Models.Category>)
+                                {
+                                    <option id="@Html.DisplayFor(x => item.ID)">@Html.DisplayFor(x => item.CategoryName)</option>
+                                }
+                            </select>
                             <button class="btn btn-primary" type="submit">
                                 <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Szukaj
                             </button>
@@ -39,14 +45,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Events)
         {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category)
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)

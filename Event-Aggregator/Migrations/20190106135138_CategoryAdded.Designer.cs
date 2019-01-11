@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventAggregator.Migrations
 {
     [DbContext(typeof(Event_AggregatorContext))]
-    [Migration("20190105101218_Initial")]
-    partial class Initial
+    [Migration("20190106135138_CategoryAdded")]
+    partial class CategoryAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,13 +21,26 @@ namespace EventAggregator.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Event_Aggregator.Models.Category", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("Event_Aggregator.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Category");
+                    b.Property<int?>("CategoryID");
 
                     b.Property<string>("Description");
 
@@ -42,6 +55,8 @@ namespace EventAggregator.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Event");
                 });
@@ -66,6 +81,13 @@ namespace EventAggregator.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("Event_Aggregator.Models.Event", b =>
+                {
+                    b.HasOne("Event_Aggregator.Models.Category", "Category")
+                        .WithMany("Events")
+                        .HasForeignKey("CategoryID");
                 });
 #pragma warning restore 612, 618
         }

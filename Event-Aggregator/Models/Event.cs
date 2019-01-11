@@ -6,7 +6,7 @@ namespace Event_Aggregator.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Category { get; set; }
+        public virtual Category Category { get; set; }
         public string Hash { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

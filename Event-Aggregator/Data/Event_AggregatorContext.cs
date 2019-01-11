@@ -11,5 +11,6 @@ namespace Event_Aggregator.Models
 
         public DbSet<Event> Event { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }
