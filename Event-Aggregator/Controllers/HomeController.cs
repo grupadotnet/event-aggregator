@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Event_Aggregator.Models;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,8 +19,7 @@ namespace Event_Aggregator.Controllers
 
         public async Task<IActionResult> Index(string searchString)
         {
-            var latest = _context.Event.OrderByDescending(x => x.StartDate).Take(10);
-            var categories = _context.Category.Select(x => x);
+            var latest = _context.Event.Include(c => c.Category).OrderByDescending(x => x.StartDate).Take(10);
             if (!string.IsNullOrEmpty(searchString))
             {
                 var query = latest.Where(x => x.Title.Contains(searchString) || x.Category.CategoryName.Contains(searchString) || x.Hash.Contains(searchString)).Select(x => x);
@@ -29,7 +29,10 @@ namespace Event_Aggregator.Controllers
                     ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
             }
 
-            return View(await latest.ToListAsync());
+            var events = await latest.ToListAsync();
+            ModelsWrapper mw = new ModelsWrapper();
+            mw.Events = events;
+            return View(mw);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
