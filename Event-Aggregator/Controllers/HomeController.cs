@@ -28,7 +28,7 @@ namespace Event_Aggregator.Controllers
                 else
                     ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
             }
-
+            ViewData["Categories"] = await _context.Category.Select(x => x).ToListAsync();
             var events = await latest.ToListAsync();
             ModelsWrapper mw = new ModelsWrapper();
             mw.Events = events;
