@@ -11,9 +11,9 @@
                 <div class="form-group">
                     <p>@ViewBag.Message</p>
                     <div class="input-group">
-                        <input id="1" style="border-right:none"class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe..." required>
+                        <input id="1" style="border-right:none"class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe...">
                         <span class="input-group-btn">
-                            <select class="form-control" id="sel1" style="margin-left: -130px; width: 130px">
+                            <select class="form-control" id="sel1" name="categoryString" style="margin-left: -130px; width: 130px">
                                 <option id="0">Wszystko</option>
                                 @foreach (var item in ViewData["Categories"] as IEnumerable<Event_Aggregator.Models.Category>)
                                 {
