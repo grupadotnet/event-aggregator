@@ -21,13 +21,13 @@ namespace Event_Aggregator.Controllers
         {
             var latest = _context.Event.Include(c => c.Category).OrderByDescending(x => x.StartDate).Take(10);
             //searching process...
-            var query = latest.Where(x => x.Title.Contains(searchString) || x.Category.CategoryName.Equals(categoryString) 
-                        || x.Category.CategoryName.Contains(searchString) || x.Hash.Contains(searchString)).Select(x => x);
+            //var query = latest.Where(x => x.Title.Contains(searchString) || x.Category.CategoryName.Equals(categoryString) 
+            //            || x.Category.CategoryName.Contains(searchString) || x.Hash.Contains(searchString)).Select(x => x);
 
-            if (!(query.Count() == 0))
-                latest = query;
-            else
-                ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
+            //if (!(query.Count() == 0))
+            //    latest = query;
+            //else
+            //    ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
             //
             //
             ViewData["Categories"] = await _context.Category.Select(x => x).ToListAsync();
