@@ -13,6 +13,7 @@ function buildVS
     )
     process
     {
+        Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
         $msBuildExe = 'C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe'
 
         if ($nuget) {
