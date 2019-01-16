@@ -6,7 +6,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-            bat "C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe Event-Aggregator.sln /p:Configuration=Release /property:OutDir=bin/publish /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+            bat "dotnet build"
         }
     } catch (err) {
         currentBuild.result = 'FAILED'
