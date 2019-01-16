@@ -6,9 +6,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-            bat 'powershell Set-ExecutionPolicy Unrestricted'
-            bat 'powershell C:\\Users\\biela\\Documents\\event-aggregator\\Scripts\\Build.ps1'
-            bat 'powershell Set-ExecutionPolicy Restricted'
+            bat "msbuild.exe Event-Aggregator.sln /p:Configuration=Release /property:OutDir=bin/publish /p:Platform=\”Any CPU\” /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
         }
     } catch (err) {
         currentBuild.result = 'FAILED'
