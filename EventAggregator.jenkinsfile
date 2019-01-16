@@ -6,7 +6,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-        	powershell "C:\Program Files (x86)\Jenkins\workspace\EventAggregator_Jenkins\Scripts\Build.ps1 -path "C:\\Program Files (x86)\\Jenkins\\workspace\\EventAggregator_Jenkins\\Event-Aggregator.sln""
+            bat "\"${tool 'MSBuild'}\" C:\\Program Files (x86)\\Jenkins\\workspace\EventAggregator_Jenkins\\Event-Aggregator.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
         }
     } catch (err) {
         currentBuild.result = 'FAILED'
