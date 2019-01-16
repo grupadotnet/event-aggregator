@@ -27,5 +27,7 @@ function buildVS
 
         Write-Host "Building $($path)" -foregroundcolor green
         & "$($msBuildExe)" "$($path)" /t:Build /m
+        Write-Host "Builf finished. :)"
+
     }
 }
