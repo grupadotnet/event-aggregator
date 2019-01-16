@@ -8,6 +8,7 @@ node {
         stage ('Build') {
             bat 'powershell Set-ExecutionPolicy Unrestricted'
             bat 'powershell C:\\Users\\biela\\Documents\\event-aggregator\\Scripts\\Build.ps1'
+            bat 'powershell Set-ExecutionPolicy Restricted'
         }
     } catch (err) {
         currentBuild.result = 'FAILED'
