@@ -8,6 +8,9 @@ node {
         stage ('Build') {
             bat "dotnet build"
         }
+        stage ('Test') {
+            bat "dotnet test"
+        }
     } catch (err) {
         currentBuild.result = 'FAILED'
         throw err
