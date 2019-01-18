@@ -34,78 +34,38 @@
     </div>
 </div>
 </br>
-<div class="container col-md-12">
-    <div class="container col-md-3" style="background-color:#f5f5f5; margin: 20px">
-        <div class="row">
-            <div style="width:auto;height:80px; background-color:burlywood"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-1" style="margin-top: 6px">
-                <p style="color:red; font-weight:bolder">Sty</p>
-                <p>13</p>
-            </div>
-            <div class="col-md-9" style="margin-left:10px; margin-top: 6px">
-                <p style="font-size: large">Przyjazd Kalisza do Krakowa!</p>
-                <p style="font-size:smaller">25.12.2019 12:00</p>
-                <p style="font-size:smaller">Krakow, ICE</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="container col-md-3 border" style="background-color:#f5f5f5; margin: 20px">
-        <div class="row">
-            <div style="width:auto;height:80px; background-color:burlywood"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-1" style="margin-top: 6px">
-                <p style="color:red; font-weight:bolder">Sty</p>
-                <p>13</p>
-            </div>
-            <div class="col-md-9" style="margin-left:10px; margin-top: 6px">
-                <p style="font-size: large">Spotkanie miłośników motoryzacji</p>
-                <p style="font-size:smaller">25.12.2019 12:00</p>
-                <p style="font-size:smaller">Krakow, ICE</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="container col-md-3 border" style="background-color:#f5f5f5; margin: 20px">
-        <div class="row">
-            <div style="width:auto;height:80px; background-color:burlywood"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-1" style="margin-top: 6px">
-                <p style="color:red; font-weight:bolder">Sty</p>
-                <p>13</p>
-            </div>
-            <div class="col-md-9" style="margin-left:10px; margin-top: 6px">
-                <p style="font-size: large">Spotkanie miłośników motoryzacji</p>
-                <p style="font-size:smaller">25.12.2019 12:00</p>
-                <p style="font-size:smaller">Krakow, ICE</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</br></br>
-
-
-
-@*@foreach (var item in Model.Events)
+<div class="container= col-md-12" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
+    @foreach (var item in Model.Events)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Localization)
-            </td>
-        </tr>
-    }*@
+        <div class="container col-md-4 col-sm-7">
+            <div style="margin:20px;">
+                <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4; height:205px;">
+                    <div style="width:auto; height:80px; background:burlywood"></div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 6px; margin-left: 8px; text-align:center; text-wrap:normal">
+                            <p style="color:red; font-weight:bolder">
+                                sty
+                            </p>
+                            <p>
+                                19
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-sm-7 col-xs-6" style="padding-left:20px; margin-top: 6px; margin-bottom:6px; border-color: #ff0000; border-left-style:dashed;">
+                            <p style="font-size: large">
+                                @Html.DisplayFor(modelItem =>item.ShortTitle)
+                            </p>
+                            <p style="font-size:smaller">
+                                @Html.DisplayFor(modelItem =>item.StartDate)
+                            </p>
+                            <p style="font-size:smaller">
+                                @Html.DisplayFor(modelItem => item.Localization)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
