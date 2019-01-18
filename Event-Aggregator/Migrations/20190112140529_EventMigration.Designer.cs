@@ -4,14 +4,16 @@ using Event_Aggregator.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventAggregator.Migrations
 {
     [DbContext(typeof(Event_AggregatorContext))]
-    partial class Event_AggregatorContextModelSnapshot : ModelSnapshot
+    [Migration("20190112140529_EventMigration")]
+    partial class EventMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +39,6 @@ namespace EventAggregator.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Approved");
 
                     b.Property<int>("CategoryID");
 

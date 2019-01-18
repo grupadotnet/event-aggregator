@@ -32,7 +32,7 @@ namespace Event_Aggregator.Controllers
         public IActionResult SearchResult(Event eve)
         {
             
-           List <string> filtredList = context.Event.Where(x => x.Title.Contains(eve.Title)).Select(x => x.Title ).ToList();
+           List <string> filtredList = context.Event.Where(x => x.ShortTitle.Contains(eve.ShortTitle)).Select(x => x.ShortTitle ).ToList();
            if(filtredList.Count==0)
             {
                 ViewBag.Message = "Brak Wyników";

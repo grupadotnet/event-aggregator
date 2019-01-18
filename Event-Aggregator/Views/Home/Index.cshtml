@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <p>@ViewBag.Message</p>
                     <div class="input-group">
-                        <input id="1" style="border-right:none"class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe...">
+                        <input id="1" style="border-right:none" class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe...">
                         <span class="input-group-btn">
                             <select class="form-control" id="sel1" name="categoryString" style="margin-left: -130px; width: 130px">
                                 <option id="0">Wszystko</option>
@@ -33,35 +33,48 @@
         </div>
     </div>
 </div>
+</br>
 
-<h3>Lista ostatnio dodanych wydarzeń</h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nazwa wydarzenia</th>
-            <th>Kategoria</th>
-            <th>Data i godzina</th>
-            <th>Lokalizacja</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Events)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Localization)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-</br></br>
+<div class="container= col-md-12" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
+    @foreach (var item in Model.Events)
+    {
+        <div class="container col-md-4 col-sm-7">
+            <div style="margin:20px;">
+                <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4; height:205px;">
+                    <div style="width:auto; height:80px; background:burlywood"></div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 6px; margin-left: 8px; text-align:center; text-wrap:normal">
+                            <p style="color:red; font-weight:bolder">
+                                @{
+                                    var monthName = item.StartDate.ToString("MMM");
+                                }
+                                @Html.DisplayFor(modelItem => monthName)
+                            </p>
+                            <p>
+                                @{ 
+                                    var day = item.StartDate.ToString("dd");
+                                }
+                                @Html.DisplayFor(modelItem => day)
+                            </p>
+                        </div>
+                        <div class="col-md-8 col-sm-7 col-xs-6" style="padding-left:20px; margin-top: 6px; margin-bottom:6px; border-color: #ff0000; border-left-style:dashed;">
+                            <p style="font-size: large">
+                                @Html.DisplayFor(modelItem => item.ShortTitle)
+                            </p>
+                            <p style="font-size:smaller">
+                                @{ 
+                                    var date = item.StartDate.ToString("d MMMM yyyy, HH:mm");
+                                }
+                                @Html.DisplayFor(modelItem => date)
+                            </p>
+                            <p style="font-size:smaller">
+                                @Html.DisplayFor(modelItem => item.Localization)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
