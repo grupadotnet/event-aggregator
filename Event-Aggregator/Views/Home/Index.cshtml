@@ -45,18 +45,28 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 6px; margin-left: 8px; text-align:center; text-wrap:normal">
                             <p style="color:red; font-weight:bolder">
-                                sty
+                                @{
+                                    var monthName = item.StartDate.ToString("MMM");
+                                }
+                                @Html.DisplayFor(modelItem => monthName)
                             </p>
                             <p>
-                                19
+                                @{ 
+                                    var day = item.StartDate.ToString("dd");
+                                }
+                                @Html.DisplayFor(modelItem => day)
                             </p>
                         </div>
                         <div class="col-md-8 col-sm-7 col-xs-6" style="padding-left:20px; margin-top: 6px; margin-bottom:6px; border-color: #ff0000; border-left-style:dashed;">
                             <p style="font-size: large">
-                                @Html.DisplayFor(modelItem =>item.ShortTitle)
+
+                                @Html.DisplayFor(modelItem => item.ShortTitle)
                             </p>
                             <p style="font-size:smaller">
-                                @Html.DisplayFor(modelItem =>item.StartDate)
+                                @{ 
+                                    var date = item.StartDate.ToString("dd.MM.yyyy, hh:mm");
+                                }
+                                @Html.DisplayFor(modelItem => date)
                             </p>
                             <p style="font-size:smaller">
                                 @Html.DisplayFor(modelItem => item.Localization)
