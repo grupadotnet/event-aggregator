@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Event_Aggregator.Models
@@ -24,6 +25,7 @@ namespace Event_Aggregator.Models
         public DateTime StartDate { get; set; }
 
         [DataType(DataType.DateTime)]
+        [Required]
         public DateTime EndDate { get; set; }
 
         [Required]
@@ -31,5 +33,8 @@ namespace Event_Aggregator.Models
 
         [Required]
         public string Description { get; set; }
+
+        [DefaultValue(false)]
+        public bool Approved { get; set; }
     }
 }

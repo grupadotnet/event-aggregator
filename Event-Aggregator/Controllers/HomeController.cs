@@ -19,7 +19,7 @@ namespace Event_Aggregator.Controllers
 
         public async Task<IActionResult> Index(string searchString, string categoryString)
         {
-            var latest = _context.Event.Include(c => c.Category).OrderByDescending(x => x.StartDate).Take(10);
+            var latest = _context.Event.Where(c => c.Approved.Equals(true)).Include(c => c.Category).OrderByDescending(x => x.StartDate).Take(10);
             //searching process...
             var query = latest.Where(x => x.ShortTitle.Contains(searchString) || x.Category.CategoryName.Equals(categoryString) 
                         || x.Category.CategoryName.Contains(searchString)).Select(x => x);
