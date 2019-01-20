@@ -29,7 +29,8 @@ namespace Event_Aggregator.Controllers
             else
                 ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
 
-
+            DefaultImage df = new DefaultImage();
+            ViewBag.DfImage = df.ImagePath;
             ViewData["Categories"] = await _context.Category.Select(x => x).ToListAsync();
             var events = await latest.ToListAsync();
             ModelsWrapper mw = new ModelsWrapper();
