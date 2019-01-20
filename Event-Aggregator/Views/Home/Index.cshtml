@@ -35,42 +35,45 @@
 </div>
 </br>
 
-<div class="container= col-md-12" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
+<div class="container col-md-12" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
     @foreach (var item in Model.Events)
     {
         <div class="container col-md-4 col-sm-7">
             <div style="margin:20px;">
-                <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4; height:205px;">
+                <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4;">
                     <div style="width:auto; height:80px">
                         <div class="img-rounded" style="height:100%;width:100%; background: url(/images/defaultImage.jpg);">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 6px; margin-left: 8px; text-align:center; text-wrap:normal">
-                            <p style="color:red; font-weight:bolder">
+                            <p style="color:#337ab7; font-weight:bolder">
                                 @{
                                     var monthName = item.StartDate.ToString("MMM");
                                 }
                                 @Html.DisplayFor(modelItem => monthName)
                             </p>
-                            <p>
+                            <p style="font-weight:bold">
                                 @{ 
                                     var day = item.StartDate.ToString("dd");
                                 }
                                 @Html.DisplayFor(modelItem => day)
                             </p>
                         </div>
-                        <div class="col-md-8 col-sm-7 col-xs-6" style="padding-left:20px; margin-top: 6px; margin-bottom:6px; border-color: #ff0000; border-left-style:dashed;">
+                        <div class="col-md-8 col-sm-7 col-xs-6" style="padding-left:20px; margin-top: 6px; margin-bottom:6px; border-color: #337ab7; border-left-style:dashed;">
                             <p style="font-size: large">
                                 @Html.DisplayFor(modelItem => item.ShortTitle)
                             </p>
-                            <p style="font-size:smaller">
+                            <p style="font-size: small">
+                                @Html.DisplayFor(modelItem=>item.LongerTitle)
+                            </p>
+                            <p style="font-size:x-small">
                                 @{ 
                                     var date = item.StartDate.ToString("d MMMM yyyy, HH:mm");
                                 }
                                 @Html.DisplayFor(modelItem => date)
                             </p>
-                            <p style="font-size:smaller">
+                            <p style="font-size:x-small">
                                 @Html.DisplayFor(modelItem => item.Localization)
                             </p>
                         </div>

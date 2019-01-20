@@ -22,15 +22,13 @@ namespace Event_Aggregator.Controllers
             var latest = _context.Event.Where(c => c.Approved.Equals(true)).Include(c => c.Category).OrderByDescending(x => x.StartDate).Take(10);
             //searching process...
             var query = latest.Where(x => x.ShortTitle.Contains(searchString) || x.Category.CategoryName.Equals(categoryString) 
-                        || x.Category.CategoryName.Contains(searchString)).Select(x => x);
+                        || x.Category.CategoryName.Contains(searchString) || x.Localization.Contains(searchString)).Select(x => x);
 
             if (!(query.Count() == 0))
                 latest = query;
             else
                 ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
 
-            DefaultImage df = new DefaultImage();
-            ViewBag.DfImage = df.ImagePath;
             ViewData["Categories"] = await _context.Category.Select(x => x).ToListAsync();
             var events = await latest.ToListAsync();
             ModelsWrapper mw = new ModelsWrapper();
