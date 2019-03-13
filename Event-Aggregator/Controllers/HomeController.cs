@@ -26,8 +26,6 @@ namespace Event_Aggregator.Controllers
 
             if (!(query.Count() == 0))
                 latest = query;
-            else
-                ViewBag.Message = "Nie odnaleziono wyników spełniających kryteria wyszukiwania.";
 
             ViewData["Categories"] = await _context.Category.Select(x => x).ToListAsync();
             var events = await latest.ToListAsync();

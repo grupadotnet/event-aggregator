@@ -35,10 +35,10 @@
 </div>
 </br>
 
-<div class="container col-md-12" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
+<div class="container" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
     @foreach (var item in Model.Events)
     {
-        <div class="container col-md-4 col-sm-7">
+        <div class="container col-xs-10 col-sm-6 col-md-4">
             <div style="margin:20px;">
                 <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4;">
                     <div style="width:auto; height:80px">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 6px; margin-left: 8px; text-align:center; text-wrap:normal">
+                        <div class="col-md-2 col-sm-2 col-xs-3" style="margin-top: 6px; margin-left: 8px; text-align:center; text-wrap:normal">
                             <p style="color:#337ab7; font-weight:bolder">
                                 @{
                                     var monthName = item.StartDate.ToString("MMM");

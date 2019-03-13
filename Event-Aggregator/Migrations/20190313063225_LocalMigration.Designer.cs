@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventAggregator.Migrations
 {
     [DbContext(typeof(Event_AggregatorContext))]
-    [Migration("20190112140529_EventMigration")]
-    partial class EventMigration
+    [Migration("20190313063225_LocalMigration")]
+    partial class LocalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,8 @@ namespace EventAggregator.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Approved");
 
                     b.Property<int>("CategoryID");
 
