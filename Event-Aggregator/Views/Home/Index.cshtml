@@ -38,7 +38,7 @@
 <div class="container" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
     @foreach (var item in Model.Events)
     {
-        <div class="container col-xs-10 col-sm-6 col-md-4">
+    <a class="container col-xs-10 col-sm-6 col-md-4" href="@Url.Action("Index","Details")">
             <div style="margin:20px;">
                 <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4;">
                     <div style="width:auto; height:80px">
@@ -54,7 +54,7 @@
                                 @Html.DisplayFor(modelItem => monthName)
                             </p>
                             <p style="font-weight:bold">
-                                @{ 
+                                @{
                                     var day = item.StartDate.ToString("dd");
                                 }
                                 @Html.DisplayFor(modelItem => day)
@@ -65,10 +65,10 @@
                                 @Html.DisplayFor(modelItem => item.ShortTitle)
                             </p>
                             <p style="font-size: small">
-                                @Html.DisplayFor(modelItem=>item.LongerTitle)
+                                @Html.DisplayFor(modelItem => item.LongerTitle)
                             </p>
                             <p style="font-size:x-small">
-                                @{ 
+                                @{
                                     var date = item.StartDate.ToString("d MMMM yyyy, HH:mm");
                                 }
                                 @Html.DisplayFor(modelItem => date)
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </a>
     }
 
 </div>
