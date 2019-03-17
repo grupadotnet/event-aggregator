@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Event_Aggregator.Models;
-using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Event_Aggregator.Controllers
 {
@@ -12,10 +15,10 @@ namespace Event_Aggregator.Controllers
 
         public DetailsController(Event_AggregatorContext context) => _context = context;
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
-            ViewBag.Id = id;
-            return View();
+            var query = _context.Event.Where(x => id.Equals(x.Id)).Select(x => x).Take(1);
+            return View(await query.ToListAsync());
         }
     }
 }

@@ -4,5 +4,63 @@
     ViewData["Title"] = "Event Details";
 }
 
-<h2>@ViewBag.Id</h2>
+@foreach (var item in Model)
+{
+    var EventShorter = item.ShortTitle;
+    var EventLonger = item.LongerTitle;
+    var EventStart = item.StartDate;
+    var EventEnd = item.EndDate;
+    var EventLocalization = item.Localization;
+    var EventDesc = item.Description;
+
+
+<div class="container col-12" style="margin-top: 5%">
+    <div class="row">
+        <div id="DescriptionLeftPanel" class="container col-md-6 col-sm-12">
+            <div id="EventPicture">
+                <div class=" col-md-6" style="border-radius: 0 10px 0 10px; color: white; position: absolute; bottom: 0; background: #00000085">
+                    <h4>@EventShorter</h4>
+                    <p>@EventLonger</p>
+                </div>
+            </div>
+            <div id="EventDetails" class="col-md-12">
+                <div class="row">
+                    <div id="date" class="col-md-4">
+                        <div class="row">
+                            <div class="glyphicon glyphicon-calendar col-md-4" style="font-size:40px"></div>
+                            <div class="container col-md-8" style="vertical-align:auto">
+                                <p>@EventStart</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tickets" class="col-md-4">
+                        <div class="row">
+                            <div class="glyphicon glyphicon-usd col-md-4" style="font-size: 40px"></div>
+                            <div id="Cash" class="col-md-8">
+                                <p>0 zł</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="address" class="col-md-4">
+                        <div class="row">
+                            <div class="glyphicon glyphicon-map-marker col-md-4" style="font-size: 40px"></div>
+                            <div class="col-md-8">
+                                <p>@EventLocalization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Description" class="col-md-12">
+                <p>@EventDesc</p>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <p>Map here</p>
+        </div>
+    </div>
+
+</div>
+}
 
