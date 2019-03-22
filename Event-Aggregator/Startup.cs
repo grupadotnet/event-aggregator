@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Event_Aggregator.Models;
+using Event_Aggregator.Google;
 
 namespace Event_Aggregator
 {
@@ -33,6 +34,7 @@ namespace Event_Aggregator
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<GoogleApiSettings>(Configuration.GetSection("GoogleApiSettings"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

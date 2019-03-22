@@ -1,24 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using Event_Aggregator.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Event_Aggregator.Google;
 
 namespace Event_Aggregator.Controllers
 {
     public class DetailsController : Controller
     {
         private readonly Event_AggregatorContext _context;
+        private readonly GoogleApiSettings _googleApiSettings;
 
-        public DetailsController(Event_AggregatorContext context) => _context = context;
+        public DetailsController(Event_AggregatorContext context, IOptions<GoogleApiSettings> options)
+        {
+            _googleApiSettings = options.Value;
+            _context = context;
+        }
 
         public async Task<IActionResult> Index(int id)
         {
-            var query = _context.Event.Where(x => id.Equals(x.Id)).Select(x => x).Take(1);
-            return View(await query.ToListAsync());
+            var result = await _context.Event.FirstOrDefaultAsync(x => id.Equals(x.Id));
+            ViewBag.ApiKey = _googleApiSettings.ApiKey;
+            return View(result);
         }
     }
 }
