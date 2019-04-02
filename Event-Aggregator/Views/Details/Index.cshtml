@@ -1,5 +1,7 @@
 ﻿@model Event_Aggregator.Models.Event
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=@ViewBag.ApiKey&callback=initMap" defer></script>
+
 @{
     ViewData["Title"] = "Event Details";
 }
@@ -67,7 +69,6 @@
                     });
                 }
             </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=@ViewBag.ApiKey&callback=initMap" async defer></script>
         </div>
     </div>
 
