@@ -1,0 +1,39 @@
+﻿::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: blue;
+    border-radius: 5px;
+}
+
+#EventPicture {
+    position: relative;
+    height: 150px;
+    border-radius: 10px;
+    background: url(/images/defaultImage.jpg);
+    margin-bottom:7px;
+}
+
+#EventDetails {
+    border-bottom: 3px dashed blue;
+}
+
+#Description {
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height:260px;
+    text-align: justify;
+    overflow:auto;
+}
+
+#Cash {
+    padding-top: 7px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}

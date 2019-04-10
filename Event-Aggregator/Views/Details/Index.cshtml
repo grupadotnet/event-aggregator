@@ -1,0 +1,77 @@
+﻿@model Event_Aggregator.Models.Event
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=@ViewBag.ApiKey&callback=initMap" defer></script>
+
+@{
+    ViewData["Title"] = "Event Details";
+}
+<div class="container col-12" style="margin-top: 5%">
+    <div class="row">
+        <div id="DescriptionLeftPanel" class="container col-md-6 col-sm-12">
+            <div id="EventPicture">
+                <div class=" col-md-6" style="border-radius: 0 10px 0 10px; color: white; position: absolute; bottom: 0; background: #00000085">
+                    <h4>@Model.ShortTitle</h4>
+                    <p>@Model.LongerTitle</p>
+                </div>
+            </div>
+            <div id="EventDetails" class="col-md-12">
+                <div class="row">
+                    <div id="date" class="col-md-4">
+                        <div class="row">
+                            <div class="glyphicon glyphicon-calendar col-md-4" style="font-size:40px"></div>
+                            <div class="container col-md-8" style="vertical-align:auto">
+                                <p>@Model.StartDate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tickets" class="col-md-4">
+                        <div class="row">
+                            <div class="glyphicon glyphicon-usd col-md-4" style="font-size: 40px"></div>
+                            <div id="Cash" class="col-md-8">
+                                <p>0 zł</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="address" class="col-md-4">
+                        <div class="row">
+                            <div class="glyphicon glyphicon-map-marker col-md-4" style="font-size: 40px"></div>
+                            <div class="col-md-8">
+                                <p>@Model.Localization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Description" class="col-md-12">
+                <p>@Model.Description</p>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div id="map"></div>
+            <script>
+                function initMap() {
+                    let address = "@Html.Raw(Model.Localization)";
+                    var geocoder = new google.maps.Geocoder();
+                    var zoom = { zoom: 15 };
+                    var map = new google.maps.Map(document.getElementById('map'), zoom);
+
+                    geocoder.geocode({ 'address': address }, function (results, status) {
+                        if (status == 'OK') {
+                            map.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
+                            });
+                        } else {
+                            console.log('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                }
+            </script>
+        </div>
+    </div>
+
+</div>
+
+

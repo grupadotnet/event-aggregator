@@ -12,10 +12,7 @@ namespace Event_Aggregator.Controllers
     {
         private readonly Event_AggregatorContext _context;
 
-        public HomeController(Event_AggregatorContext context)
-        {
-            _context = context;
-        }
+        public HomeController(Event_AggregatorContext context) => _context = context;
 
         public async Task<IActionResult> Index(string searchString, string categoryString)
         {

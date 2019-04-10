@@ -11,22 +11,22 @@
                 <div class="form-group">
                     <p>@ViewBag.Message</p>
                     <div class="input-group">
-                        <input id="1" style="border-right:none" class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe...">
-                        <span class="input-group-btn">
-                            <select class="form-control" id="sel1" name="categoryString" style="margin-left: -130px; width: 130px">
-                                <option id="0">Wszystko</option>
-                                @foreach (var item in ViewData["Categories"] as IEnumerable<Event_Aggregator.Models.Category>)
-                                {
-                                    <option id="@Html.DisplayFor(x => item.ID)">@Html.DisplayFor(x => item.CategoryName)</option>
-                                }
-                            </select>
-                            <button class="btn btn-primary" type="submit">
-                                <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Szukaj
-                            </button>
-                            <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("AddEvent", "Search")'">
-                                <i class="glyphicon glyphicon-plus" aria-hidden="false"></i> Utwórz
-                            </button>
-                        </span>
+                        <input id="1" style="border-right:none" class="form-control" type="text" name="searchString" placeholder="Hasło lub słowo kluczowe..."/>
+                            <span class="input-group-btn">
+                                <select class="form-control" id="sel1" name="categoryString" style="margin-left: -130px; width: 130px">
+                                    <option id="0">Wszystko</option>
+                                    @foreach (var item in ViewData["Categories"] as IEnumerable<Event_Aggregator.Models.Category>)
+                                    {
+                                        <option id="@Html.DisplayFor(x => item.ID)">@Html.DisplayFor(x => item.CategoryName)</option>
+                                    }
+                                </select>
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="glyphicon glyphicon-search" aria-hidden="true"></i> Szukaj
+                                </button>
+                                <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("AddEvent", "Search")'">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="false"></i> Utwórz
+                                </button>
+                            </span>
                     </div>
                 </div>
             </form>
@@ -38,7 +38,7 @@
 <div class="container" style="display:flex; flex-wrap:wrap; margin-bottom:10%">
     @foreach (var item in Model.Events)
     {
-        <div class="container col-xs-10 col-sm-6 col-md-4">
+    <a class="container col-xs-10 col-sm-6 col-md-4" name="@item.Id" href="@Url.Action("Index","Details",new { id = item.Id })">
             <div style="margin:20px;">
                 <div class="row" style="border-bottom: 1px solid; border-color:#e4e4e4;">
                     <div style="width:auto; height:80px">
@@ -54,7 +54,7 @@
                                 @Html.DisplayFor(modelItem => monthName)
                             </p>
                             <p style="font-weight:bold">
-                                @{ 
+                                @{
                                     var day = item.StartDate.ToString("dd");
                                 }
                                 @Html.DisplayFor(modelItem => day)
@@ -65,10 +65,10 @@
                                 @Html.DisplayFor(modelItem => item.ShortTitle)
                             </p>
                             <p style="font-size: small">
-                                @Html.DisplayFor(modelItem=>item.LongerTitle)
+                                @Html.DisplayFor(modelItem => item.LongerTitle)
                             </p>
                             <p style="font-size:x-small">
-                                @{ 
+                                @{
                                     var date = item.StartDate.ToString("d MMMM yyyy, HH:mm");
                                 }
                                 @Html.DisplayFor(modelItem => date)
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </a>
     }
 
 </div>
